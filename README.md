@@ -1,13 +1,15 @@
 # SkyGrid
-Game Mode Add-on for BentoBox the provides a SkyGrid experience
+SkyGrid 是著名的天空网生存游戏. SkyBlick, SethBling 的作者在 2012 年发布了此类型的地图.
+天空网游戏有目标和技巧，并且可以多人合作，技巧和方法使它非常有趣!
 
 ## Installation
 
-1. Place the addon jar in the addons folder of the BentoBox plugin
-2. Restart the server
-3. The addon will create worlds and a data folder and inside the folder will be a config.yml
-4. Stop the server 
-5. Edit the config.yml how you want.
-6. Delete any worlds that were created by default.
-7. Restart the server
+1. 安装 BentoBox 运行一次服务器.
+2. 将 jar 文件放入 BentoBox 扩展文件夹.
+3. 重启服务器.
+4. 插件将会创建天空网世界并生成数据文件夹，在文件夹中你会看到 config.yml.
+5. 关闭服务器.
+6. 根据你的需要编辑 config.yml.
+7. 如果你改动了与世界生成&管理有关的设置，请删除刚刚生成的世界.
+8. 再次启动服务器.
 

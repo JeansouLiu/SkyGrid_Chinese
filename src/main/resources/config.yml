@@ -1,22 +1,22 @@
-# SkyGrid Configuration ${version}
+# SkyGrid 配置文件 ${version}
 #
 skygrid:
   command:
-    # Island Command. What command users will run to access their island.
-    # To define alias, just separate commands with white space.
+    # 天空网指令.
+    # 要定义多个指令, 请用空格分隔.
     island: skygrid sg
-    # The island admin command.
-    # To define alias, just separate commands with white space.
+    # 天空网管理员指令.
+    # 要定义多个管理员指令, 请用空格分隔.
     admin: sgadmin sga
 world:
   chest-fill:
-    # Number of unique items per chest
+    # 每个主世界箱子中有多少种物品
     overworld: 5
-    # Nether chest fill setting
+    # 每个下界箱子中有多少种物品
     nether: 5
-    # The End chest fill setting
+    # 每个末地箱子中有多少种物品
     end: 5
-  # Chest items will be taken randomly from this list. All items have an equal chance.
+  # 箱子中可以出现的物品. 每种物品出现的概率相同.
   chest-items:
     overworld:
     - ACTIVATOR_RAIL
@@ -537,11 +537,10 @@ world:
     - WHITE_SHULKER_BOX
     - YELLOW_SHULKER_BOX
 
-  # World block types. If the material cannot be placed, bedrock will be used.
-  # Format: Material : Probability
-  # Block types must be Bukkit Material types.
-  # Chests have different items in them in different world types.
-  # Over world blocks. Beware of making too many chests, they can lag a lot.
+  # 天空网方块类型. 如果该方块不可用, 将用基岩替代.
+  # 格式: 方块英文ID : 概率
+  # 不同世界类型箱子中有不同的物品.
+  # 主世界的组成方块. 不要设置太多的箱子, 箱子会引起卡顿.
   blocks:
     BROWN_MUSHROOM: 8
     STRIPPED_SPRUCE_LOG: 8
@@ -647,11 +646,11 @@ world:
     STONE: 180
     ROSE_BUSH: 8
   nether:
-    # Generate SkyGrid Nether - if this is false, the nether world will not be made
+    # 是否生成下界
     generate: true
-    # Nether block types
-    # Beware with glowstone and lava - the lighting calcs will lag the
-    # server badly if there are too many blocks.
+    # 下界天空网的组成方块
+    # 尽量少设置岩浆和萤石 - 光线的计算
+    # 会影响服务器的性能.
     blocks:
       SOUL_SAND: 90
       LAVA: 1
@@ -667,9 +666,9 @@ world:
       GLOWSTONE: 1
       RED_NETHER_BRICKS: 12
   end:
-    # Generate SkyGrid End - if this is false, the end world will not be made
+    # 是否生成下界
     generate: true
-    # The End blocks. END_CRYSTAL is blocked because it causes serious performance issues.
+    # 下界天空网的方块组成. END_CRYSTAL(末影水晶) 已被禁用, 它会引发严重的性能问题.
     blocks:
       CHEST: 5
       END_ROD: 1
@@ -679,45 +678,45 @@ world:
       GRAVEL: 10
       SPAWNER: 5
       PURPUR_BLOCK: 10
-  # Overworld has biomes - this will affect some block types and tree types.
+  # 是否为主世界分配生物群系 - 这将会影响某些方块和树木的类型.
   create-biomes: false
-  # The probability of a frame being created in a chunk. Frames are always at y=0.
+  # 为区块创建底面的概率. 底面位于 y=0.
   end-frame-probability: 0.1
-  # Friendly name for this world. Used in admin commands. Must be a single word
+  # 天空网世界的昵称. 可用于管理员指令. 必须为一个单词
   friendly-name: SkyGrid
-  # Name of the world - if it does not exist then it will be generated.
-  # It acts like a prefix for nether and end
+  # 天空网世界的名称 - 不存在将会自动生成.
+  # 对于下界和末地，这充当一个前缀
   world-name: skygrid-world
-  # World difficulty setting - PEACEFUL, EASY, NORMAL, HARD
-  # Other plugins may override this setting
+  # 天空网世界难度设置 - PEACEFUL, EASY, NORMAL, HARD
+  # 其它插件可能会覆盖此设置
   difficulty: NORMAL
-  # Start at these coordinates.
+  # 起始坐标.
   start-x: 0
   start-z: 0
-  # SkyGrid height
-  # This is the height of the top sky grid layer
+  # 天空网高度
+  # 天空网最顶层的 y 坐标
   skygrid-height: 128
-  # Spawn height
-  # Height where players will spawn. Can be less than the grid height
+  # 出生点高度
+  # 玩家默认出生点的 y 坐标. 不可大于上方所设值
   spawn-height: 128
-  # Space around new players in blocks (will be rounded up to nearest 16 blocks)
+  # 不同玩家之间的距离 (将被自动四舍五入为 16 的倍数)
   space-around-players: 1000
-  # Default protection radius around player's home (so total size is 2x this)
+  # 玩家出生点的保护半径
   protection-range: 50
-  # The default game mode for this world. Players will be set to this mode when they create
-  # a new island for example. Options are SURVIVAL, CREATIVE, ADVENTURE, SPECTATOR
+  # 天空网默认游戏模式. 比如, 玩家领取区域时会变为此游戏模式
+  # 可用值: SURVIVAL, CREATIVE, ADVENTURE, SPECTATOR
   default-game-mode: SURVIVAL
-  # The maximum number of players a player can ban at any one time in this game mode.
-  # The permission acidarea.ban.maxlimit.X where X is a number can also be used per player
-  # -1 = unlimited
+  # 玩家一次最多能封禁多少人.
+  # 权限: skygrid.ban.maxlimit.X
+  # -1 = 无限
   ban-limit: -1
-  # Mob white list - these mobs will NOT be removed when logging in or doing /island
+  # 生物白名单 - 这些生物将不会在玩家回家时被清除
   remove-mobs-whitelist:
   - GUARDIAN
   - ZOMBIE_VILLAGER
   - WITHER
   - ZOMBIFIED_PIGLIN
-  # World flags. These are boolean settings for various flags for this world
+  # 世界属性.
   flags:
     OBSIDIAN_SCOOPING: true
     ENTER_EXIT_MESSAGES: true
@@ -728,9 +727,9 @@ world:
     TREES_GROWING_OUTSIDE_RANGE: false
     PREVENT_TELEPORT_WHEN_FALLING: false
     NATURAL_SPAWNING_OUTSIDE_RANGE: true
-  # These are the default protection settings protected areas.
-  # The value is the minimum island rank required to do the action
-  # Ranks are: Visitor = 0, Member = 900, Owner = 1000
+  # 默认保护设置.
+  # 高于所设等级的玩家才可以完成该行为
+  # 等级为: 游客 = 0, 成员 = 900, 区域主 = 1000
   default-protection-flags:
     HURT_ANIMALS: 500
     REDSTONE: 500
@@ -790,7 +789,7 @@ world:
     CONTAINER: 500
     JUKEBOX: 500
     POTION_THROWING: 500
-  # These are the default settings for new protected areas
+  # 新保护区域的默认设置
   default-settings:
     PVP_END: false
     PVP_NETHER: false
@@ -798,114 +797,110 @@ world:
     MONSTER_SPAWN: true
     FIRE_SPREAD: true
     PVP_OVERWORLD: false
-  # These settings/flags are hidden from users
-  # Ops can toggle hiding in-game using SHIFT-LEFT-CLICK on flags in settings
+  # 隐藏属性
   hidden-flags: []
-  # Visitor banned commands - Visitors to islands cannot use these commands in this world
+  # 游客不能在保护区执行这些指令
   visitor-banned-commands: []
-  # Falling banned commands - players cannot use these commands when falling
-  # if the PREVENT_TELEPORT_WHEN_FALLING world setting flag is active
+  # 掉落时禁止的指令
+  # 需开启 PREVENT_TELEPORT_WHEN_FALLING 世界属性
   falling-banned-commands:
     - warp
     - spawn
 area:
-  # Default max team size
-  # Permission size cannot be less than the default below. 
+  # 默认队伍成员的最大值
+  # 权限所设值不可低于此值.
   max-team-size: 4
-  # Default maximum number of coop rank members per area
-  # Players can have the skygrid.coop.maxsize.<number> permission to be bigger but
-  # permission size cannot be less than the default below.
+  # 每个岛屿的合作者的最大人数
+  # 赋予玩家 skygrid.coop.maxsize.<人数> 权限可覆盖此选项
+  # 权限所设人数不得小于此值
   # Added since 1.13.0.
   max-coop-size: 4
-  # Default maximum number of trusted rank members per area
-  # Players can have the skygrid.trust.maxsize.<number> permission to be bigger but
-  # permission size cannot be less than the default below.
+  # 每个岛屿最多可以有多少个受信任玩家
+  # 赋予玩家 skygrid.trust.maxsize.<人数> 权限可覆盖此选项
+  # 权限所设人数不得小于此值
   # Added since 1.13.0.
   max-trusted-size: 4
   reset:
-    # How many resets a player is allowed (override with /sgadmin clearresets <player>)
-    # Value of -1 means unlimited, 0 means hardcore - no resets.
-    # Example, 2 resets means they get 2 resets or 3 islands lifetime
+    # 玩家最多可以重置多少次岛屿 (可使用 /sgadmin clearresets <玩家名> 设置)
+    # -1 意为无限, 0 为禁止重置.
+    # 比如, 2 次重置表示玩家有 2 次重置机会或 3 次获得新岛屿的机会
     reset-limit: -1
-    # Kicked or leaving players lose resets
-    # Players who leave a team will lose a reset chance
-    # If a player has zero resets left and leaves a team, they cannot make a new
-    # island by themselves and can only join a team.
-    # Leave this true to avoid players exploiting free islands
+    # 被踢出或主动离开队伍的玩家将会失去一次岛屿重置机会
+    # 如果玩家的重置机会为 0, 且离开了队伍, 该玩家将不能再创建新岛屿, 只能加入其它队伍
+    # 设为 true 可以避免玩家用不正常的方式使用队伍功能
     leavers-lose-reset: false
-    # Allow kicked players to keep their inventory.
-    # Overrides the on-leave inventory reset for kicked players.
+    # 保留被踢出玩家的背包物品.
+    # 此项将覆盖 on-leave.inventory 设置.
     kicked-keep-inventory: false
     on-join:
-      # What should reset when the player joins or starts new
-      # Reset Money - if this is true, will reset the player's money to the starting money
-      # Recommendation is that this is set to true, but if you run multi-worlds
-      # make sure your economy handles multi-worlds too.
+      # 当玩家创建或加入一个岛屿时扩展是否重置这些项目
+      # 重置金钱 - 若为 true, 将会将玩家的金钱重置为默认值
+      # 推荐开启此功能, 但是如果你的服务器上还有其他玩法且你还想开启此功能
+      # 请使用支持不同世界不同金钱的插件.
       money: false
-      # Reset inventory - if true, the player's inventory will be cleared.
-      # Note: if you have MultiInv running or a similar inventory control plugin, that
-      # plugin may still reset the inventory when the world changes.
+      # 重置背包 - 若为 true, 玩家的背包将会被清空.
+      # 注意: 如果你安装了 MultiInv 或其他相似的背包管理插件, 那些插件仍会在
+      # 切换世界时更换玩家的背包.
       inventory: false
-      # Reset health - if true, the player's health will be reset.
+      # 重置血量 - 若为 true, 玩家将被治愈.
       health: true
-      # Reset hunger - if true, the player's hunger will be reset.
+      # 重置饥饿值 - 若为 true, 玩家将被喂饱.
       hunger: true
-      # Reset experience points - if true, the player's experience will be reset.
+      # 重置经验值 - 若为 true, 玩家的经验值将被重置.
       exp: false
-      # Reset Ender Chest - if true, the player's Ender Chest will be cleared.
+      # 重置末影箱 - 若为 true, 玩家末影箱中的物品将被清空.
       ender-chest: false
     on-leave:
-      # What should reset when the player leaves or is kicked
-      # Reset Money - if this is true, will reset the player's money to the starting money
-      # Recommendation is that this is set to true, but if you run multi-worlds
-      # make sure your economy handles multi-worlds too.
+      # 当玩家离开/被踢出一个岛屿时,扩展是否重置以下项目
+      # 重置金钱 - 若为 true, 将会将玩家的金钱重置为默认值
+      # 推荐开启此功能, 但是如果你的服务器上还有其他玩法且你还想开启此功能
+      # 请使用支持不同世界不同金钱的插件.
       money: false
-      # Reset inventory - if true, the player's inventory will be cleared.
-      # Note: if you have MultiInv running or a similar inventory control plugin, that
-      # plugin may still reset the inventory when the world changes.
+      # 重置背包 - 若为 true, 玩家的背包将会被清空.
+      # 注意: 如果你安装了 MultiInv 或其他相似的背包管理插件, 那些插件仍会在
+      # 切换世界时更换玩家的背包.
       inventory: false
-      # Reset health - if true, the player's health will be reset.
+      # 重置血量 - 若为 true, 玩家将被治愈.
       health: false
-      # Reset hunger - if true, the player's hunger will be reset.
+      # 重置饥饿值 - 若为 true, 玩家将被喂饱.
       hunger: false
-      # Reset experience - if true, the player's experience will be reset.
+      # 重置经验值 - 若为 true, 玩家的经验值将被重置.
       exp: false
-      # Reset Ender Chest - if true, the player's Ender Chest will be cleared.
+      # 重置末影箱 - 若为 true, 玩家末影箱中的物品将被清空.
       ender-chest: false
   create-area-on-first-login:
-    # Toggles the automatic area creation upon the player's first login on your server.
-    # If set to true,
-    #   * Upon connecting to your server for the first time, the player will be told that
-    #     an area will be created for him.
-    #   * An area will be created for the player without needing him to run the create command.
-    # If set to false, this will disable this feature entirely.
-    # Warning:
-    #   * If you are running multiple gamemodes on your server, and all of them have
-    #     this feature enabled, an area in all the gamemodes will be created simultaneously.
-    #     However, it is impossible to know on which area the player will be teleported to afterwards.
-    #   * Area creation can be resource-intensive, please consider the options below to help mitigate
-    #     the potential issues, especially if you expect a lot of players to connect to your server
-    #     in a limited period of time.
+    # 是否在玩家第一次进入服务器时自动创建该玩家的岛屿.
+    # 若设为 true,
+    #   * 当玩家第一次加入服务器时, 该玩家将被告知
+    #     岛屿已创建.
+    #   * 请确保你有一个叫 "default" 的模板: 此功能将用
+    #     此模板创建岛屿.
+    #   * 玩家不必执行指令即可创建岛屿.
+    # 若设为 false, 此功能将被完全禁用.
+    # 警告:
+    #   * 如果你的服务器(单端)运行了多个游戏模式, 并且都
+    #     开启了此功能, 所有游戏模式的岛屿都会被自动创建.
+    #     但是, 玩家之后将被传送到哪个游戏模式是随机的.
+    #   * 创建岛屿是比较占用服务器性能的, 请认真考虑是否启用此功能
+    #     来相对的避免潜在的问题发生, 尤其是服务器人流量较大时.
     enable: false
-    # Time in seconds after the player logged in, before his area gets created.
-    # If set to 0 or less, the area will be created directly upon the player's login.
-    # It is recommended to keep this value under a minute's time.
+    # 玩家登录服务器多少秒后, 岛屿将开始创建.
+    # 若所设值 ≤ 0, 岛屿将在玩家登录时立即创建.
+    # 建议此值不要大于 1 分钟(60 秒).
     delay: 5
-    # Toggles whether the area creation should be aborted if the player logged off while the
-    # delay (see the option above) has not worn off yet.
-    # If set to true,
-    #   * If the player has logged off the server while the delay (see the option above) has not
-    #     worn off yet, this will cancel the area creation.
-    #   * If the player relogs afterward, since he will not be recognized as a new player, no area
-    #     would be created for him.
-    #   * If the area creation started before the player logged off, it will continue.
-    # If set to false, the player's area will be created even if he went offline in the meantime.
-    # Note this option has no effect if the delay (see the option above) is set to 0 or less.
+    # 若玩家在上方所设的时间内离开了服务器
+    # 是否停止岛屿的创建.
+    # 若设为 true,
+    #   * 若玩家在延缓期内离开了服务器，岛屿创建会停止.
+    #     * 若玩家之后又加入了服务器，ta 不会再被视为新玩家，因此岛屿不会自动创建.
+    #   * 若玩家在岛屿创建阶段离开了服务器, 岛屿会继续创建.
+    # 若设为 false, 无论如何岛屿都会在延迟过后创建.
+    # 若上方选项小于等于 0 ，此设置无任何效果.
     abort-on-logout: true
   commands:
-    # List of commands to run when a player joins.
+    # 当玩家加入或创建岛屿时执行的指令.
     on-join: []
-    # List of commands to run when a player leaves.
+    # 当玩家离开岛屿、重置岛屿或被踢出岛屿时执行的指令.
     on-leave: []
   sethome:
     nether:
@@ -915,23 +910,23 @@ area:
       allow: true
       require-confirmation: true
   deaths:
-    # Whether deaths are counted or not.
+    # 是否记录死亡次数.
     counted: true
-    # Maximum number of deaths to count. The death count can be used by add-ons.
+    # 最多记录的死亡次数. 死亡数可能会被其它扩展使用.
     max: 10
-    # When a player joins a team, reset their death count
+    # 当玩家加入一个队伍时，重置 ta 的死亡数
     team-join-reset: true
-    # Reset player death count when they start new or reset
+    # 是否在玩家创建新岛/重置岛屿时重置死亡数
     reset-on-new-island: true
     
 protection:
-  # Geo restrict mobs.
-  # Mobs that exit the protected space where they were spawned will be removed.
+  # 区域限制型生物.
+  # 离开出生岛的这些生物将被移除.
   geo-limit-settings: []
-  # Invincible visitors. List of damages that will not affect visitors.
-  # Make list blank if visitors should receive all damages
+  # 无敌游客设置. 这些伤害不会影响游客.
+  # 留空以关闭无敌游客模式
   invincible-visitors: []
 do-not-edit-these-settings:
-  # These settings should not be edited
+  # 请勿修改此处
   reset-epoch: 0
 
